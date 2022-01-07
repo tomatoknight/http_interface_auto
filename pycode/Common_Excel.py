@@ -56,10 +56,10 @@ def getTestHttpMethod(testDataFile, testScene):
     return method
 
 if __name__ == "__main__":
-    testDataFile = "E:\\llf_58TestSuites\\jz_webIntergration\\robot_code\\testData\\testData.xlsx"
+    testDataFile = r"C:\Users\Jack\PycharmProjects\http_interface_auto\testData\testData.xls"
     testScene = "getAreasByCityId"
-    host = "jingzhun.58.com"
-    method, url, caseNo, testName, dict_params, expectCode, expectContent = getTestData(testDataFile, testScene, host, 2)
+    host = "postman-echo.com"
+    method, url, caseNo, testName, dict_params, expectCode, expectContent = getTestData(testDataFile, testScene, host, 1)
     print(url)
     print(testName)
-    # print(expectReuslt)
+    #print(expectReuslt)

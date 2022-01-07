@@ -6,7 +6,7 @@ Library           ../../pycode/Common_Exec.py
 *** Keywords ***
 获取请求头
     ${dict_headers}    Create Dictionary    Host=${Host}    User-Agent=${User-Agent}    Accept=${Accept}    Accept-Language=${Accept-Language}    Accept-Encoding=${Accept-Encoding}
-    ...    Cookie=${Cookie}    Connection=${Connection}    Cache-Control=${Cache-Control}
+    ...    Cookie=${Cookie}
     Return From Keyword    ${dict_headers}
 
 执行测试
@@ -16,6 +16,7 @@ Library           ../../pycode/Common_Exec.py
     # 获取用例数目
     ${case_num}    getTestCaseNum    ${testDataFile}    ${testScene}
     # 获取当前时间
+
     ${execTime}    getCurtime
     #批量执行testScene测试场景下的用例
     ${status}    batch_Call    ${httpTestSuite}    ${httpRequestTestCase}    ${testScene}    ${case_num}    ${testCaseReportPath}

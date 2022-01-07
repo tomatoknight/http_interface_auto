@@ -1,1 +1,0 @@
-pybot -d E:/llf_58TestSuites/jz_webIntergration/robot_code/report -o output.xml -l log.html -r report.html --test test_getCatesBySecondId E:\llf_58TestSuites\jz_webIntergration\robot_code\rfcode\batch_Request.txt

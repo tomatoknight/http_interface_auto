@@ -25,25 +25,24 @@ def batch_Call(robot_testSuite, robot_testCase, testScene, caseNum, testCaseRepo
             output_report = "-r report_{0}_{1}.html".format(testName, execTime)
             variable = "-v caseNo:" + str(caseNo) + " -v testScene:" + testScene
             testCase = "--test " + robot_testCase
-            pybot_cmd = "pybot " + output_dir + " " + output_xml + " " + output_log + " " + output_report + " " + variable + " " +  " " + testCase + " " + robot_testSuite
-            os.system(pybot_cmd)  # 执行pybot命令
+            robot_cmd = "robot " + output_dir + " " + output_xml + " " + output_log + " " + output_report + " " + variable + " " +  " " + testCase + " " + robot_testSuite
+            os.system(robot_cmd)  # 执行pybot命令
         return "done"
     except Exception as e:
         return "Error: " + str(e)
 
-def send_HttpRequest(url, data=None, headers=None, method=None):
+def send_HttpRequest(url, headers=None, method=None):
     '''
     发送http请求
     :param url: 请求的url
-    :param data: 请求数据
     :param headers: 请求头
     :param method: 请求方法
     :return: 响应码，响应内容
     '''
     if method == "get":
-        response = requests.get(url, data, headers=headers)
+        response = requests.get(url, headers=headers)
     if method == "post":
-        response = requests.post(url, data, headers=headers)
+        response = requests.post(url, headers=headers)
     code = str(response.status_code)
     content = response.content.decode("utf-8")  # 转码
     return code, content
@@ -87,18 +86,18 @@ def mergeReport(testScene, testCaseReportPath, execTime):
         # 被合并的报告
         merge_report = testCaseReportPath + "/result_{0}".format(testScene) + "/output_testcase_*.xml"
         name = "--name " + testScene
-        rebot_cmd = r"rebot " + output_dir + " " + output_xml + " " + output_log + " " + output_report + " " + name + " "  + merge_report
+        rebot_cmd = r"rebot " + output_dir + " " + output_xml + " " + output_log + " " + output_report + " " + name +\
+                    " " + merge_report
         os.system(rebot_cmd)  # 执行rebot命令
         return "done"
     except Exception as e:
         return "Error: " + str(e)
 
 if __name__ == "__main__":
-    robotTestCase = "sendPostRequest"
-    robotTestSuite = r"E:/llf_58TestSuites/jz_webIntergration/robot_code/rfcode/send_Request.txt"
-    testScene = "weather"
-    testDataFile = "E:\\llf_58TestSuites\\jz_webIntergration\\robot_code\\testData\\testData.xlsx"
-    testCaseReportPath = "E:\\llf_58TestSuites\\jz_webIntergration\\robot_code\\report\\TestCaseReport"
+    robotTestSuite = "C:/Users/Jack/PycharmProjects/http_interface_auto/rfcode/http_Request.txt"
+    testScene = "getAreasByCityId"
+    testDataFile = "C:/Users/Jack/PycharmProjects/http_interface_auto/testData/testData.xlsx"
+    testCaseReportPath = "C:/Users/Jack/PycharmProjects/http_interface_auto/report/TestCaseReport"
 
-    # mergeReport(testScene, testCaseReportPath, getCurtime())
-    # cleanLogs(testScene, testCaseReportPath)
+    mergeReport(testScene, testCaseReportPath, getCurtime())
+    #cleanLogs(testScene, testCaseReportPath)

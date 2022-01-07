@@ -1,47 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20180303 09:46:00.211" generator="Robot 3.0.2 (Python 2.7.13 on win32)">
-<suite source="E:\llf_58TestSuites\jz_webIntergration\robot_code\rfcode\batch_Request.txt" id="s1" name="batch Request">
-<test id="s1-t1" name="test_case1">
-<kw name="Log" library="BuiltIn">
-<doc>Logs the given message with the given level.</doc>
-<arguments>
-<arg>hello world</arg>
-</arguments>
-<msg timestamp="20180303 09:46:00.876" level="INFO">hello world</msg>
-<status status="PASS" endtime="20180303 09:46:00.876" starttime="20180303 09:46:00.876"></status>
+<robot generator="Robot 4.0.2 (Python 3.7.0 on win32)" generated="20210527 17:07:35.582" rpa="false" schemaversion="2">
+<suite id="s1" name="batch Request" source="C:\Users\Jack\PycharmProjects\http_interface_auto\rfcode\batch_Request.txt">
+<test id="s1-t1" name="test_getAreasByCityId">
+<kw name="Set Variable" library="BuiltIn">
+<var>${testScene}</var>
+<arg>getAreasByCityId</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20210527 17:07:35.712" level="INFO">${testScene} = getAreasByCityId</msg>
+<status status="PASS" starttime="20210527 17:07:35.712" endtime="20210527 17:07:35.712"/>
 </kw>
-<tags>
-<tag>test1</tag>
-</tags>
-<status status="PASS" endtime="20180303 09:46:00.879" critical="yes" starttime="20180303 09:46:00.874"></status>
-</test>
-<test id="s1-t2" name="test_case2">
-<kw name="Log" library="BuiltIn">
-<doc>Logs the given message with the given level.</doc>
-<arguments>
-<arg>nihao</arg>
-</arguments>
-<msg timestamp="20180303 09:46:00.887" level="INFO">nihao</msg>
-<status status="PASS" endtime="20180303 09:46:00.887" starttime="20180303 09:46:00.886"></status>
+<kw name="执行测试" library="自定义关键字">
+<arg>${testScene}</arg>
+<kw name="Get Test Http Method" library="Common_Excel">
+<var>${method}</var>
+<arg>${testDataFile}</arg>
+<arg>${testScene}</arg>
+<doc>获取testScene测试场景的请求方法
+:param testDataFile: 测试数据文件
+:param testScene: 测试场景
+:return: 请求方法</doc>
+<msg timestamp="20210527 17:07:35.716" level="INFO">${method} = get</msg>
+<status status="PASS" starttime="20210527 17:07:35.713" endtime="20210527 17:07:35.716"/>
 </kw>
-<tags>
-<tag>test2</tag>
-</tags>
-<status status="PASS" endtime="20180303 09:46:00.889" critical="yes" starttime="20180303 09:46:00.884"></status>
+<kw name="Get Test Case Num" library="Common_Excel">
+<var>${case_num}</var>
+<arg>${testDataFile}</arg>
+<arg>${testScene}</arg>
+<doc>获取testScene测试场景中的测试用例数
+:param testDataFile: 测试数据文件
+:param testScene: 测试场景
+:return: 测试用例数</doc>
+<msg timestamp="20210527 17:07:35.719" level="INFO">${case_num} = 1</msg>
+<status status="PASS" starttime="20210527 17:07:35.716" endtime="20210527 17:07:35.719"/>
+</kw>
+<kw name="Get Curtime" library="Common_Exec">
+<var>${execTime}</var>
+<doc>获取当前时间
+:return: 当前时间</doc>
+<msg timestamp="20210527 17:07:35.719" level="INFO">${execTime} = 20210527170735</msg>
+<status status="PASS" starttime="20210527 17:07:35.719" endtime="20210527 17:07:35.719"/>
+</kw>
+<kw name="Batch Call" library="Common_Exec">
+<var>${status}</var>
+<arg>${httpTestSuite}</arg>
+<arg>${httpRequestTestCase}</arg>
+<arg>${testScene}</arg>
+<arg>${case_num}</arg>
+<arg>${testCaseReportPath}</arg>
+<arg>${execTime}</arg>
+<doc>批量执行testScene测试场景下的用例
+:param robot_testSuite: robot testSuite路径
+:param robot_testCase: robot testCase路径
+:param testScene: 测试场景
+:param caseNum: 用例数
+:param testCaseReportPath: 业务用例测试报告路径
+:param execTime: 执行时间
+:return:</doc>
+<msg timestamp="20210527 17:07:36.647" level="INFO">${status} = done</msg>
+<status status="PASS" starttime="20210527 17:07:35.719" endtime="20210527 17:07:36.647"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${status}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210527 17:07:36.648" level="INFO">done</msg>
+<status status="PASS" starttime="20210527 17:07:36.648" endtime="20210527 17:07:36.648"/>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<arg>${status}</arg>
+<arg>mergeReport</arg>
+<arg>${testScene}</arg>
+<arg>${testCaseReportPath}</arg>
+<arg>${execTime}</arg>
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<status status="PASS" starttime="20210527 17:07:36.648" endtime="20210527 17:07:36.648"/>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<arg>log</arg>
+<arg>${status}</arg>
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<status status="PASS" starttime="20210527 17:07:36.648" endtime="20210527 17:07:36.648"/>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<arg>cleanLogs</arg>
+<arg>${testScene}</arg>
+<arg>${testCaseReportPath}</arg>
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<status status="PASS" starttime="20210527 17:07:36.648" endtime="20210527 17:07:36.648"/>
+</kw>
+<status status="PASS" starttime="20210527 17:07:35.712" endtime="20210527 17:07:36.649"/>
+</kw>
+<doc>sceneName: 获取本城市信息
+
+path: /cpc/jz/channel/getAreasByCityId
+
+method: get
+</doc>
+<status status="PASS" starttime="20210527 17:07:35.711" endtime="20210527 17:07:36.649"/>
 </test>
-<status status="PASS" endtime="20180303 09:46:00.895" starttime="20180303 09:46:00.219"></status>
+<status status="PASS" starttime="20210527 17:07:35.584" endtime="20210527 17:07:36.650"/>
 </suite>
 <statistics>
 <total>
-<stat fail="0" pass="2">Critical Tests</stat>
-<stat fail="0" pass="2">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat fail="0" pass="1">test1</stat>
-<stat fail="0" pass="1">test2</stat>
 </tag>
 <suite>
-<stat fail="0" id="s1" name="batch Request" pass="2">batch Request</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="batch Request">batch Request</stat>
 </suite>
 </statistics>
 <errors>
