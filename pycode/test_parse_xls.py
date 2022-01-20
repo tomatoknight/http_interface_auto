@@ -11,8 +11,7 @@ sheet1 = workbook.sheet_by_name(sheet1_name)
 print(sheet1.name, sheet1.nrows, sheet1.ncols)
 
 rows =  sheet1.row_values(0)
-#print(rows(1))
+print(rows[0])
 
 cols = sheet1.col_values(0)
 print(cols)
-

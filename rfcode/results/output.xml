@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.2 (Python 3.7.0 on win32)" generated="20210531 14:28:17.912" rpa="false" schemaversion="2">
+<suite id="s1" name="Rfcode" source="C:\Users\Jack\PycharmProjects\http_interface_auto\rfcode">
+<suite id="s1-s1" name="myFirst" source="C:\Users\Jack\PycharmProjects\http_interface_auto\rfcode\myFirst.robot">
+<test id="s1-s1-t1" name="ShowMyList">
+<kw name="Create List" library="BuiltIn">
+<var>${lists}</var>
+<arg>first</arg>
+<arg>second</arg>
+<arg>third</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20210531 14:28:17.940" level="INFO">${lists} = ['first', 'second', 'third']</msg>
+<status status="PASS" starttime="20210531 14:28:17.939" endtime="20210531 14:28:17.940"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{lists}</value>
+<iter>
+<var name="${element}">first</var>
+<kw name="Start Element">
+<arg>${element}</arg>
+<msg timestamp="20210531 14:28:17.941" level="FAIL">No keyword with name 'Start Element' found.</msg>
+<status status="FAIL" starttime="20210531 14:28:17.941" endtime="20210531 14:28:17.941"/>
+</kw>
+<status status="FAIL" starttime="20210531 14:28:17.940" endtime="20210531 14:28:17.941"/>
+</iter>
+<status status="FAIL" starttime="20210531 14:28:17.940" endtime="20210531 14:28:17.941"/>
+</for>
+<status status="FAIL" starttime="20210531 14:28:17.939" endtime="20210531 14:28:17.942">No keyword with name 'Start Element' found.</status>
+</test>
+<status status="FAIL" starttime="20210531 14:28:17.937" endtime="20210531 14:28:17.942"/>
+</suite>
+<status status="FAIL" starttime="20210531 14:28:17.914" endtime="20210531 14:28:17.942"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Rfcode">Rfcode</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="myFirst">Rfcode.myFirst</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
